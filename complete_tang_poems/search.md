@@ -74,9 +74,9 @@ def search(s):
     return dict_ 
 result = search(query)
 
-print("Content-type: application/json")
-print() 
-print(json.JSONEncoder().encode(result)) 
+print("Content-type: application/json; charset=utf-8")
+print()  
+print(json.JSONEncoder(ensure_ascii=False).encode(result)) 
     
 EOF
 chmod o+x /usr/lib/cgi-bin/search.py
@@ -88,7 +88,7 @@ cat << EOF > /var/www/html/search.html
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Upload to S3</title>
+    <title>搜全唐诗</title>
     <style>
     #inp {height: 30px; width: 400px}
     #sub {height: 400px; width: 400px}
