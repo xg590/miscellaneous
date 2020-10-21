@@ -54,3 +54,64 @@ print(f"""Content-type:text/html
 EOF
 chmod o+x /usr/lib/cgi-bin/test.py
 ```
+### Real CGI Script (You cannot use this example in production because it is prone to SQL injection)
+```python
+cat << EOF > /usr/lib/cgi-bin/search.py
+#!/usr/bin/python3
+# -*- coding: UTF-8 -*-
+import cgi, cgitb; cgitb.enable()
+form = cgi.FieldStorage()
+query         = form['shiju'].value 
+
+import psycopg2, json
+conn = psycopg2.connect("dbname=newDB")
+cur = conn.cursor() 
+def search(s): 
+    s = ','.join([f"'%{i}%'" for i in s.split()])
+    cur.execute(f"SELECT * FROM tang_poems WHERE content LIKE ANY(ARRAY[{s}]);") 
+    dict_ = {}
+    _ = [dict_.update({id:{'volume':volume, 'title':title, 'content':content}}) for id, volume, title, content in cur.fetchall()] 
+    return dict_ 
+result = search(query)
+
+print("Content-type: application/json")
+print() 
+print(json.JSONEncoder().encode(result)) 
+    
+EOF
+chmod o+x /usr/lib/cgi-bin/search.py
+```
+### Front-end webpage
+```html
+cat << EOF > /var/www/html/search.html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Upload to S3</title>
+    <style>
+    #inp {height: 30px; width: 400px}
+    #sub {height: 400px; width: 400px}
+</style>
+  </head>
+  <body>
+    <form enctype="multipart/form-data" action="/cgi-bin/search.py" method="post">
+      <table>
+        <tr>
+          <td>输入你要搜的诗:</td>
+          <td>
+            <input type="text"
+                   name="shiju"
+                   value="烟花三月下扬州 白日依山尽 低头思故乡"
+                   id="inp"
+            />
+          </td>
+        </tr> 
+      </table>
+      <input type="submit" value="Search" id="sub"/>
+    </form>
+  </body>
+</html>
+EOF
+chown www-data:www-data /var/www/html/search.html
+```
