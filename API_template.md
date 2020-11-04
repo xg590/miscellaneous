@@ -2,16 +2,14 @@
 * Markdown的缩进为2个空格
 * 代码缩进不限制
 #### 动态页 (屏幕底部tab名称)
-* 动态 (屏幕内tab名称)
+* 获取动态 (页面内功能)
+  * 请求函数
+    * ???
+  * 请求模式
+    * GET 
   * 请求触发时机
     * 页面在初始化时
     * 页面滑动至底端时加载新页面 
-  * 请求函数
-    * getMomentByUser(String JWToken, int Offset)
-    * JWToken是为用户的???
-    * Offset是表示当前动态的个数
-  * 请求模式  
-    POST (如无必要，保持使用POST)
   * 请求json
   ```javascript
     { 
@@ -33,6 +31,15 @@
       }
     }
   ```
+* 发布动态 (页面内功能)
+  * 请求函数
+    * getMomentByUser(String JWToken, int Offset)
+    * JWToken是为用户的???
+    * Offset是表示当前动态的个数
+  * 请求模式  
+    * POST  
+  * 请求触发时机
+    * 
   * 响应json  
   ```javascript
   {
