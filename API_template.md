@@ -6,9 +6,9 @@
 #### 动态页 (屏幕底部tab名称)
 * 发布动态 (页面内功能)
   * 请求函数
-    * getMomentByUser(String JWToken, int Offset)
-    * JWToken是为用户的???
-    * Offset是表示当前动态的个数
+    * getMomentByUser(int offset, int limit) 
+    * offset表示当前已获取的动态个数
+    * limit表示请求获取的动态个数
   * 请求模式  
     * POST  
   * 请求触发时机
