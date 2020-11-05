@@ -2,7 +2,17 @@
 * Markdown的缩进为2个空格
 * 代码缩进不限制
 #### 请求规范
-* 所有请求都需要添加Headers，包含用户的openid和session_key
+* 所有请求都需要添加Headers，包含用户的openid和session_key.
+* 所有回应都是plaintext(因为[手册](https://smartprogram.baidu.com/docs/develop/api/net/request/)上说responseType可选的值仅有text和arraybuffer)，需要前端使用JSON.parse()。
+```javascript
+swan.request({
+                url: 'https://guoxiaokang.com/login', 
+                header: {'openid':'abcdefg', 'session_key':'hijklmn'} 
+                success: res => { 
+                    js = JSON.parse(res.data);
+                }
+})
+```
 #### 动态页 (屏幕底部tab名称)
 * 发布动态 (页面内功能)
   * 请求函数
