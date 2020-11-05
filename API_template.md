@@ -55,24 +55,24 @@ swan.request({
   * 响应json  
   ```javascript
   {
-    invitationList:[
+    'invitationList':[ 
       {
-        uid:"Rvan Raj",
-        uim:"/images/icon/用户头像.png",
-        uuniv:"复旦大学",
-        utype:"辩论邀约",
-        uutype:1,
-        content:{
-          title:"#辩论赛招募 | 演讲与口才协会 x 生命自然协会 #",
-          time: "2020年10月5日",
-          place:"复旦大学报告厅",
-          snapShot:"回收，空调，洗衣机，冰箱，彩电，旧手表，旧手机，旧空调，旧电脑~回收，空调，洗衣机，冰箱，彩电，旧手表，旧手机，旧空调，旧电脑~回收，空调，洗衣机，冰箱，彩电，旧手表，旧手机，旧空调，旧电脑~回收，空调，洗衣机，冰箱，彩电，旧手表，旧手机，旧空调，旧电脑~",
-          type:1,
-          im:"/images/icon/复旦大学学术报告厅.png"
-        },
-        payment: 10,
-        time:"17小时前",
-        description:"辩手们，快来参加吧！",
+            "uid":"Rvan Raj",
+            "uim":"/images/icon/用户头像.png",
+            "uuniv":"复旦大学",
+            "utype":"辩论邀约",
+            "uutype":1,
+            "content":{
+              "title":"#辩论赛招募 | 演讲与口才协会 x 生命自然协会 #",
+              "time": "2020年10月5日",
+              "place":"复旦大学报告厅",
+              "snapShot":"回收，空调，洗衣机，冰箱，彩电，旧手表，旧手机，旧空调，旧电脑~回收，空调，洗衣机，冰箱，彩电，旧手表，旧手机，旧空调，旧电脑~回收，空调，洗衣机，冰箱，彩电，旧手表，旧手机，旧空调，旧电脑~回收，空调，洗衣机，冰箱，彩电，旧手表，旧手机，旧空调，旧电脑~",
+              "type":1,
+              "im":"/images/icon/复旦大学学术报告厅.png"
+            },
+            "payment": 10,
+            "time":"17小时前",
+            "description":"辩手们，快来参加吧！",
       }
     ]
   }
