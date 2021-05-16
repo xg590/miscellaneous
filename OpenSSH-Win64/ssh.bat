@@ -1,0 +1,1 @@
+c:\Progra~1\openssh\ssh -o "StrictHostKeyChecking=no" -i pri -NfR 22222:localhost:2222 xxx@yyy.com

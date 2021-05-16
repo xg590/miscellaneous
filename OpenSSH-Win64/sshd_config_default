@@ -1,0 +1,11 @@
+ListenAddress 127.0.0.1
+ListenAddress ::1 
+Port 2222
+
+PermitEmptyPasswords no
+PasswordAuthentication no
+PubkeyAuthentication yes
+AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys
+
+AllowTcpForwarding yes
+Subsystem	sftp	sftp-server.exe
