@@ -2,8 +2,7 @@ function FindProxyForURL(url, host) {
   
   // Hostname matches 
   if (
-    dnsDomainIs(host, "app.us.adorcam.com") 
-    || shExpMatch(host, "(*.abcdomain.com|abcdomain.com)")
+     shExpMatch(host, "(*.adorcam.com)")
   )
   return "PROXY 192.168.3.3:8080"; 
   
