@@ -2,7 +2,7 @@ function FindProxyForURL(url, host) {
   
   // Hostname matches 
   if (
-     shExpMatch(host, "(*.adorcam.com)")
+     shExpMatch(host, "(*.adorcam.com|wikipedia.org)") 
   )
   return "PROXY 192.168.3.3:8080"; 
   
