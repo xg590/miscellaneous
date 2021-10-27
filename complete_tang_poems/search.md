@@ -26,11 +26,11 @@ CREATE TABLE tang_poems(
     content TEXT NOT NULL);
 """) 
 import pandas as pd
-df = pd.read_json('/tmp/complete_tang_poems.json',orient='index') 
+df = pd.read_json('/tmp/complete_tang_poems.json',orient='index')
 for i, volume, title, content in df.itertuples():
-	cur.execute(f"INSERT INTO tang_poems VALUES('{i}', '{volume}','{title}', '{content}');") 
+    cur.execute(f"INSERT INTO tang_poems VALUES('{i}', '{volume}','{title}', '{content}');")
 cur.execute("commit;")
-cur.execute("SELECT * FROM tang_poems LIMIT 2;") 
+cur.execute("SELECT * FROM tang_poems LIMIT 2;")
 cur.fetchall()
 ```
 ### Test CGI
@@ -67,7 +67,8 @@ import psycopg2, json
 conn = psycopg2.connect("dbname=newDB")
 cur = conn.cursor() 
 def search(s): 
-    s = ','.join([f"'%{i}%'" for i in s.split()])
+    s = ','.join([f"'%{i}%'" for i in s.split()]) 
+    # s = "'%烟花三月下扬州%','%白日依山尽%','%低头思故乡%'"
     cur.execute(f"SELECT * FROM tang_poems WHERE content LIKE ANY(ARRAY[{s}]);") 
     dict_ = {}
     _ = [dict_.update({id:{'volume':volume, 'title':title, 'content':content}}) for id, volume, title, content in cur.fetchall()] 
